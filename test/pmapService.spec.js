@@ -51,4 +51,20 @@ describe(`pmapService @ ${PMAP_SERVICE_URL}`, () => {
       done()
     })
   })
+
+  it('POST /multimerge_v2 - merge images work', done => {
+    request({
+      url: `${PMAP_SERVICE_URL}/multimerge_v2`,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }, (err, resp, body) => {
+      if (err) return done(err)
+      expect(resp.statusCode).to.be.lessThan(400)
+      done()
+    })
+  })
+
 })
